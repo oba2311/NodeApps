@@ -36,6 +36,7 @@ h1 {
 
 header a {
   color: whitesmoke;
+  font-size: 28px;
   margin-right: 16px;
   text-decoration: none;
 }
@@ -55,4 +56,8 @@ button {
   background: lightblue;
   color: aliceblue;
   padding: 8px;
+}
+
+#about {
+  font-size: 22px;
 }

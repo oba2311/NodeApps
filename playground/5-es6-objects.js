@@ -32,7 +32,7 @@ console.log(label);
 const { rating = 5 } = product;
 console.log(rating);
 
-const transaction = (type, { lavel, price }) => {
+const transaction = (type, { lavel = "missing label", price = 0 } = {}) => {
   console.log(type, label, price);
 };
 
