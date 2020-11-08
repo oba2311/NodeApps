@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const forecast = require("./utils/forecast");
+const geocode = require("./utils/geocode");
 
 const app = express();
 
@@ -20,27 +22,46 @@ app.use(express.static(publicPath));
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather App",
-    name: "Shreyas",
+    name: "Katoni",
+  });
+});
+
+app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    return res.send({
+      error: "provide an address",
+    });
+  }
+  geocode(req.query.address, (error, { lat, lon, location } = {}) => {
+    if (error) {
+      return res.send({ error });
+    }
+    forecast(lat, lon, (error, forecastData) => {
+      if (error) {
+        return res.send({ error });
+      }
+      res.send({
+        forecast: forecastData,
+        location,
+        address: req.query.address,
+      });
+    });
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About the app",
-    name: "dude",
-  });
-});
-
-app.get("/help", (req, res) => {
-  res.render("help", {
-    title: "Andrew good night",
-    name: "Shreyas",
+    name: "Katoni",
   });
 });
 
 // 404:
 app.get("*", (req, res) => {
-  res.send("not a page");
+  res.render("404", {
+    title: "404",
+    errorMassage: "404 this is not a page, Katoni",
+  });
 });
 
 app.listen(3000, () => {

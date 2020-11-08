@@ -1,7 +1,58 @@
-h1 {
-  color: aqua;
+body {
+  color: lightblue;
+  background-color: darkblue;
+  font-family: Helvetica, sans-serif;
+  /* max-width: 650px; */
+  margin: 0 auto;
+  padding-top: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-img {
+.main-content {
+  padding-left: 16px;
+  flex-grow: 1;
+}
+
+footer {
+  background-color: darkcyan;
+  padding: 12px;
+  border-top: 3px solid darkgreen;
+  margin-top: 16px;
+  margin-bottom: 5px;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+header a {
+  color: whitesmoke;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.portrait {
   width: 250px;
+}
+
+input {
+  border: 1px solid lightblue;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid lightblue;
+  background: lightblue;
+  color: aliceblue;
+  padding: 8px;
 }
